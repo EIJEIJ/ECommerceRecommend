@@ -70,7 +70,7 @@ object DataLoader {
     implicit val mongoConfig = MongoConfig( config("mongo.url"), config("mongo.db") )
     storeDataInMongoDB(productDF, ratingDF)
 
-    //spark.stop()
+    spark.stop()
   }
 
   def storeDataInMongoDB( productDF: DataFrame, ratingDF: DataFrame )(implicit mongoConfig: MongoConfig): Unit ={
