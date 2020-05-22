@@ -45,7 +45,6 @@ object StatisticsRecommender {
     // 创建一张叫ratings的临时表
     ratingDF.createOrReplaceTempView("ratings")
 
-    // TODO: 用spark sql去做不同的统计推荐
     // 1. 历史热门商品，按照评分个数统计，productId，count
     val rateMoreProductsDF = spark.sql("select productId, count(productId) as count from ratings group by productId order by count desc")
     storeDFInMongoDB( rateMoreProductsDF, RATE_MORE_PRODUCTS )
